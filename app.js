@@ -6,18 +6,18 @@ const chalk = require("chalk");
 
 const sequelize = require("./util/database");
 
-const Category = require("./models/category");
-const CategoryRoute = require("./routes/category");
+const Service = require("./models/service");
+const ServiceRoute = require("./routes/service");
 
 const app = express();
 
 app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
-    res.send("<H1>Working Category Services</H1>");
+    res.send("<H1>Working Service Services</H1>");
 });
 
-app.use("/category", CategoryRoute);
+app.use("/service", ServiceRoute);
 
 sequelize
     // .sync({force: true})  ---> to overwrite the tables better say format all...

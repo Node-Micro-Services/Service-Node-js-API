@@ -2,16 +2,20 @@ const Sequelize = require("sequelize").Sequelize;
 
 const sequelize = require("../util/database");
 
-const Category = sequelize.define(
-  "category",
+const Service = sequelize.define(
+  "service",
   {
-    id: {
+    serviceID: {
       type: Sequelize.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
     },
-    categoryName: {
+    description: {
+      type: Sequelize.STRING,
+      allowNull: false,
+    },
+    name: {
       type: Sequelize.STRING,
       allowNull: false,
     },
@@ -25,4 +29,4 @@ const Category = sequelize.define(
   }
 );
 
-module.exports = Category;
+module.exports = Service;

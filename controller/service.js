@@ -1,11 +1,11 @@
 const chalk = require("chalk");
 
-const Category = require("../models/category");
+const Service = require("../models/service");
 exports.getCategory = (req, res, next) => {
     const Result = [];
     const Errors = [];
     async function go() {
-        await Category.findAll()
+        await Service.findAll()
             .then((result) => {
                 const res = (chalk.yellow.bold.inverse(JSON.stringify(result)));
                 Result.push(result);
@@ -30,20 +30,11 @@ exports.postCategory = (req, res, next) => {
     const Result = [];
     const Errors = [];
     const names = req.body.name;
+    const description = req.body.description;
     const major = req.body.isMajor;
-    names.forEach((element) => {
-        Category.create({
-            categoryName: element,
-            isMajor: major,
-        })
-            .then((result) => {
-                Result.push(result);
-            })
-            .catch((error) => {
-                console.log(chalk.blue.bold.inverse(error));
-                Errors.push(error);
-            });
-    });
+    for(var i = 0; i < length(names); i++){
+        console.log(chalk.yellow.bold.inverse(names[i], description[i]))
+    }
     res.status(200).json({
         result: Result,
         errors: Errors,
@@ -54,7 +45,7 @@ exports.deleteCategory = (req, res, next) => {
     const Result = [];
     const Errors = [];
     const ID = req.params.id;
-    Category.destroy({ where: { id: ID } })
+    Service.destroy({ where: { serviceID: ID } })
         .then((result) => {
             Result.push(result);
         })
