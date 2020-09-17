@@ -32,9 +32,21 @@ exports.postCategory = (req, res, next) => {
     const names = req.body.name;
     const description = req.body.description;
     const major = req.body.isMajor;
-    for(var i = 0; i < length(names); i++){
-        console.log(chalk.yellow.bold.inverse(names[i], description[i]))
+    for(var i = 0; i < names.length; i++){
+        Service.create({
+            name: names[i],
+            description: description[i],
+            isMajor: major,
+        })
+            .then((result) => {
+                Result.push(result);
+            })
+            .catch((error) => {
+                console.log(chalk.blue.bold.inverse(error));
+                Errors.push(error);
+            });
     }
+    
     res.status(200).json({
         result: Result,
         errors: Errors,
