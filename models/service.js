@@ -13,7 +13,6 @@ const Service = sequelize.define(
     },
     description: {
       type: Sequelize.STRING,
-      allowNull: false,
     },
     name: {
       type: Sequelize.STRING,
