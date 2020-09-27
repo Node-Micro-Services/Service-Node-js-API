@@ -17,7 +17,7 @@ app.get("/", (req, res) => {
     res.send("<H1>Working Service Services</H1>");
 });
 
-app.use("/service", ServiceRoute);
+app.use("/extra-services", ServiceRoute);
 
 sequelize
     // .sync({force: true})  ---> to overwrite the tables better say format all...

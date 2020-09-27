@@ -5,7 +5,7 @@ const serviceController = require("../controller/service");
 
 const router = express.Router();
 
-router.get('/', serviceController.getCategory);
+router.get('/:major', serviceController.getCategory);
 router.post("/", serviceController.postCategory);
 router.delete("/:id", serviceController.deleteCategory);
 
